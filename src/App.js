@@ -12,6 +12,7 @@ const App = () => {
   }, [dispatch]);
 
   const user = useSelector((state) => state.user.user);
+  console.log(user);
 
   const count = useSelector((state) => state.counter.count);
   const voters = [
@@ -23,12 +24,16 @@ const App = () => {
   return (
     <div className="App">
       <header className="App-header">
+        {user && (
+          <h1>
+            Hello {user.firstName} {user.lastName}. Welcome!
+          </h1>
+        )}
         <h1>Redux made easy!</h1>
         <h3>Total votes: {count}</h3>
         {voters.map((voter) => (
           <Counter name={voter} />
         ))}
-        <h2>Show user: {user.firstName}</h2>
       </header>
     </div>
   );
